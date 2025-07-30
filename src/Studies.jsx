@@ -18,14 +18,14 @@ const StudyItem = ({ title, institution, date, description }) => {
 const Studies = () => {
   const universities = [
     {
-      title: "Técnico Universitario en Programación, Programación informática",
+      title: "Técnico Universitario en Programación.",
       institution: "Universidad Tecnológica Nacional (UTN)",
       date: "Ago. 2024",
       description: "",
     },
     {
       title:
-        "Técnico Universitario en desarrollo web, Desarrollo de aplicaciones web",
+        "Técnico Universitario en Desarrollo Web",
       institution: "Universidad Nacional de Entre Ríos",
       date: "Mar. 2023 - Nov. 2025",
       description: "",
@@ -34,43 +34,43 @@ const Studies = () => {
 
   const courses = [
     {
-      title: "Curso BASES DE DATOS SQL",
+      title: "Curso de Base de Datos SQL Server",
       institution: "Maxi Programa",
       date: "Feb. 2025",
       description:
-        "Aptitudes: SQL, Base de datos relacional, Microsoft SQL Server, Diseño de bases de datos, SGBD, Creación bases de datos",
+        "Dominio de SQL y bases de datos relacionales con Microsoft SQL Server, diseño lógico y físico de bases de datos, y manejo de sistemas gestores (SGBD) aplicados a proyectos reales.",
     },
     {
       title: "Foundational C# with Microsoft",
-      institution: "freeCodeCamp",
+      institution: "freeCodeCamp (en colaboración con Microsoft)",
       date: "Mar. 2024",
-      description: "",
+      description: "Formación en desarrollo con C# y .NET, trabajando conceptos clave como estructura modular, manejo de datos, debugging con herramientas modernas y creación de aplicaciones de consola desde cero.",
     },
     {
       title: "Curso C# Nivel 2 [.Net + SQL]",
       institution: "Maxi Programa",
       date: "Sept. 2023",
       description:
-        "Aptitudes: C#, Microsoft SQL Server, POO, GitHub, .NET framework, Arquitectura en Capas, ADO.NET, WinForms, Validaciones",
+        "Desarrollo de aplicaciones con WinForms utilizando .NET Framework 4.8, aplicando Programación Orientada a Objetos, arquitectura en capas, validaciones, conexión a bases de datos con ADO.NET e integración con Microsoft SQL Server. Manejo de versiones con GitHub y enfoque en buenas prácticas de desarrollo.",
     },
     {
       title: "Git - GitHub",
       institution: "CodeaRock",
       date: "Jul. 2023",
-      description: "Aptitudes: Git, GitHub",
+      description: "Control de versiones con Git, workflow colaborativo con GitHub, configuración de repos remotos, ramificación y merge, pull requests, manejo de conflictos y colaboración eficiente en equipo.",
     },
     
     {
       title: "Gestión de proyectos de Google",
       institution: "Coursera",
       date: "Nov. 2022",
-      description: "Aptitudes: Gestión de proyectos, Metodologías ágiles, Scrum",
+      description: "Certificación profesional de Google/Coursera que enseña gestión integral de proyectos: planificación, ejecución, monitoreo y cierre; metodologías tradicionales y ágiles (Scrum), estimación de tiempos y riesgos, comunicación efectiva, liderazgo de equipos y uso de herramientas reales para la gestión y documentación del proyecto.",
     },
     {
       title: "C# Nivel 1 - Fundamentos de la Programación",
       institution: "Maxi Programa",
       date: "Sept. 2021",
-      description: "Aptitudes: C#, .NET framework",
+      description: "Introducción práctica a C# y .NET Framework, enfocada en lógica algorítmica, estructuras fundamentales, tipos de datos, funciones y control de flujo, con enfoque en solución de problemas y hábitos de programación limpios.",
     },
   ];
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +23,16 @@ const Contact = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.nombre.trim()) newErrors.nombre = "El nombre es obligatorio.";
+
+    // Nombre: min 3 letras, solo letras y espacios
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = "El nombre es obligatorio.";
+    } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(formData.nombre.trim())) {
+      newErrors.nombre =
+        "El nombre debe tener al menos 3 letras y solo contener letras.";
+    }
+
+    // Email
     if (!formData.email.trim()) {
       newErrors.email = "El email es obligatorio.";
     } else if (
@@ -31,8 +40,21 @@ const Contact = () => {
     ) {
       newErrors.email = "Email inválido.";
     }
-    if (!formData.tema.trim()) newErrors.tema = "El tema es obligatorio.";
-    if (!formData.mensaje.trim()) newErrors.mensaje = "El mensaje es obligatorio.";
+
+    // Tema: min 5 caracteres
+    if (!formData.tema.trim()) {
+      newErrors.tema = "El tema es obligatorio.";
+    } else if (formData.tema.trim().length < 5) {
+      newErrors.tema = "El tema debe tener al menos 5 caracteres.";
+    }
+
+    // Mensaje: min 10 caracteres
+    if (!formData.mensaje.trim()) {
+      newErrors.mensaje = "El mensaje es obligatorio.";
+    } else if (formData.mensaje.trim().length < 10) {
+      newErrors.mensaje = "El mensaje debe tener al menos 10 caracteres.";
+    }
+
     return newErrors;
   };
 
@@ -94,7 +116,6 @@ const Contact = () => {
   return (
     <section id="contacto" className="bg-gray-900 py-20 px-6 text-gray-200">
       <div className="max-w-6xl mx-auto">
-        {/* Título centrado arriba */}
         <h2 className="text-4xl font-extrabold mb-12 text-center">Contacto</h2>
 
         <div className="flex flex-col md:flex-row gap-12">
@@ -124,14 +145,14 @@ const Contact = () => {
                 value={formData.nombre}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
-                  errors.nombre ? "border border-red-600" : "border border-gray-600"
+                  errors.nombre ? "border border-violet-400" : "border border-gray-600"
                 }`}
                 minLength={3}
                 maxLength={20}
                 required
               />
               {errors.nombre && (
-                <p className="text-red-600 mt-1 text-sm">{errors.nombre}</p>
+                <p className="text-violet-400 mt-1 text-sm">{errors.nombre}</p>
               )}
             </div>
 
@@ -146,12 +167,12 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
-                  errors.email ? "border border-red-600" : "border border-gray-600"
+                  errors.email ? "border border-violet-400" : "border border-gray-600"
                 }`}
                 required
               />
               {errors.email && (
-                <p className="text-red-600 mt-1 text-sm">{errors.email}</p>
+                <p className="text-violet-400 mt-1 text-sm">{errors.email}</p>
               )}
             </div>
 
@@ -166,13 +187,13 @@ const Contact = () => {
                 value={formData.tema}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
-                  errors.tema ? "border border-red-600" : "border border-gray-600"
+                  errors.tema ? "border border-violet-400" : "border border-gray-600"
                 }`}
-                minLength={4}
+                minLength={5}
                 required
               />
               {errors.tema && (
-                <p className="text-red-600 mt-1 text-sm">{errors.tema}</p>
+                <p className="text-violet-400 mt-1 text-sm">{errors.tema}</p>
               )}
             </div>
 
@@ -187,12 +208,12 @@ const Contact = () => {
                 value={formData.mensaje}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none transition-colors ${
-                  errors.mensaje ? "border border-red-600" : "border border-gray-600"
+                  errors.mensaje ? "border border-violet-400" : "border border-gray-600"
                 }`}
                 required
               />
               {errors.mensaje && (
-                <p className="text-red-600 mt-1 text-sm">{errors.mensaje}</p>
+                <p className="text-violet-400 mt-1 text-sm">{errors.mensaje}</p>
               )}
             </div>
 
@@ -205,34 +226,20 @@ const Contact = () => {
             </button>
           </form>
 
-          {/* Card redes sociales */}
-          <div className="flex flex-col items-center bg-gradient-to-br from-purple-700 via-violet-800 to-indigo-900 rounded-lg p-8 shadow-lg max-w-sm mx-auto md:mx-0 relative">
-            {/* GIF grande centrado */}
+          {/* Tarjeta de redes / contacto alternativo */}
+          <div className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-purple-700 via-violet-800 to-indigo-900 rounded-lg p-8 shadow-lg max-w-sm mx-auto md:mx-0">
             <img
-              src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" // gif animado de prueba copado
+              src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif"
               alt="Code gif"
               className="w-48 h-48 object-cover mb-6 rounded-md"
             />
-
-            {/* Texto centrado */}
-            <p className="text-center text-gray-300 mb-12 px-4">
-              También podés contactarme a través de mis redes sociales. <br />
-              ¡Soy re activo y respondo rápido! 🚀
+            <p className="text-gray-300 mb-10 px-4">
+              También podés contactarme por mis redes. <br />
+              Siempre estoy atento a los mensajes.
             </p>
-
-            {/* Íconos redes abajo alineados centro */}
-            <div className="flex gap-8 text-4xl text-gray-300 hover:text-violet-400 transition-colors absolute bottom-6 left-1/2 -translate-x-1/2">
+            <div className="flex gap-8 text-4xl text-gray-300">
               <a
-                href="https://instagram.com/tuusuario"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:text-pink-500"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://wa.me/5491123456789"
+                href="https://wa.me/5493434462589"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -248,6 +255,15 @@ const Contact = () => {
                 className="hover:text-blue-500"
               >
                 <FaLinkedin />
+              </a>
+              <a
+                href="https://github.com/tuusuario"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:text-white"
+              >
+                <FaGithub />
               </a>
             </div>
           </div>

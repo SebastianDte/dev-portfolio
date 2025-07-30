@@ -6,7 +6,7 @@ const Experience = () => {
       date: "mar 2025 - actualidad",
       location: "General Pacheco, Buenos Aires (Remoto)",
       description:
-        "Asisto a estudiantes de Programación I (TUP), respondiendo consultas y acompañando el proceso de aprendizaje durante el cuatrimestre.",
+        "Acompaño a estudiantes de la Tecnicatura Universitaria en Programación (TUP) en la materia Programación I, resolviendo dudas técnicas. Brindo seguimiento continuo durante el cuatrimestre, fomentando la comprensión de conceptos clave de la programación.",
     },
     {
       title: "Profesor Particular",
@@ -14,7 +14,7 @@ const Experience = () => {
       date: "2024 - Actualidad",
       location: "",
       description:
-        "Ofrezco apoyo en Programación y Bases de Datos. Doy clases de C# con POO y .NET, enfocándome en prácticas aplicables.",
+        "Clases personalizadas de Programación y Bases de Datos orientadas a estudiantes. Enfocado en C#, POO y .NET, aplicando conceptos con ejercicios prácticos y reales. Acompaño procesos de aprendizaje con un enfoque didáctico y progresivo.",
     },
     {
       title: "Tutor",
@@ -22,7 +22,7 @@ const Experience = () => {
       date: "2022 - Actualidad",
       location: "",
       description:
-        "Acompaño a estudiantes en cursos del ecosistema .NET y Bases de Datos, respondiendo consultas. Trabajo en cursos desde diagramas hasta escritorio.",
+        "Tutor académico en cursos de MaxiPrograma enfocados en el ecosistema .NET y bases de datos. Acompaño a estudiantes desde el desarrollo y análisis de diagramas de flujo y algoritmos, pasando por la creación de aplicaciones de consola en C#, hasta la construcción de aplicaciones de escritorio con integración a bases de datos SQL Server. Brindo resolución de dudas y asesoramiento técnico personalizado para fortalecer la comprensión y aplicación práctica.",
     },
     {
       title: "Profesor de Robótica",
@@ -30,7 +30,7 @@ const Experience = () => {
       date: "2022 - 2023",
       location: "",
       description:
-        "Clases de robótica para niños de 6 a 8 años, desarrollando habilidades pedagógicas y fomentando el interés por la tecnología desde pequeños.",
+        "Docente de robótica educativa para niños de entre 6 y 8 años. Planificación de actividades didácticas con kits tecnológicos, fomentando el pensamiento lógico, la creatividad y el entusiasmo por la tecnología desde edades tempranas.",
     },
   ];
 

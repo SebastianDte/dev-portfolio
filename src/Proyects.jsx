@@ -66,14 +66,27 @@ const ProjectCard = ({
       </div>
 
       <div className="flex gap-3 pt-2 mt-auto">
-        <a
-          href={github}
-          target="_blank"
-          className="flex-1 bg-violet-800 text-white text-xs px-4 py-2 rounded-md shadow-sm hover:bg-violet-700 transition text-center font-semibold"
-          rel="noreferrer"
-        >
-          GitHub
-        </a>
+       <a
+  href={github}
+  target="_blank"
+  className="flex-1 bg-violet-800 text-white text-xs px-4 py-2 rounded-md shadow-sm hover:bg-violet-700 transition text-center font-semibold flex items-center justify-center gap-2"
+  rel="noreferrer"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-4 h-4"
+  >
+    <path
+      fillRule="evenodd"
+      d="M12 0C5.37 0 0 5.37 0 12a12.002 12.002 0 008.205 11.385c.6.113.82-.26.82-.577v-2.044c-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.746.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.832 2.807 1.303 3.492.996.107-.775.42-1.303.764-1.602-2.665-.304-5.466-1.333-5.466-5.931 0-1.31.47-2.381 1.236-3.221-.124-.304-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.48 11.48 0 013.003-.403c1.02.005 2.045.138 3.003.403 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.803 5.625-5.474 5.921.43.37.823 1.101.823 2.222v3.293c0 .32.218.694.825.576A12.002 12.002 0 0024 12c0-6.63-5.37-12-12-12z"
+      clipRule="evenodd"
+    />
+  </svg>
+  GitHub
+</a>
+
         {demoVideo && (
           <button
             onClick={() => setShowVideo(!showVideo)}
