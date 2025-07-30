@@ -14,7 +14,7 @@ function App() {
       <Experience />
       <Studies />
       <Contact />
-      <Footer />
+      
     </div>
   );
 }

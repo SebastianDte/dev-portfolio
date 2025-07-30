@@ -24,12 +24,13 @@ const ProjectCard = ({
 
   return (
     <div
-      className="bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg
-      border-l-4 border-violet-500 hover:shadow-2xl
+      className="bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-md
+      border-l-4 border-violet-500 hover:shadow-xl
       transition-transform transform hover:-translate-y-1 hover:scale-105
-      p-6 flex flex-col space-y-5 text-gray-200"
+      p-4 flex flex-col space-y-4 text-gray-200"
+      style={{ cursor: "default" }}
     >
-      <div className="relative w-full aspect-video rounded-lg overflow-hidden group cursor-pointer">
+      <div className="relative w-full aspect-[16/9] rounded-md overflow-hidden group cursor-pointer">
         {showVideo ? (
           <iframe
             src={demoVideo}
@@ -43,20 +44,20 @@ const ProjectCard = ({
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
       </div>
 
-      <h3 className="text-3xl font-extrabold drop-shadow-md">{title}</h3>
+      <h3 className="text-2xl font-bold drop-shadow-md">{title}</h3>
 
-      <p className="text-gray-300 text-base">{description}</p>
+      <p className="text-gray-300 text-sm">{description}</p>
 
-      <div className="flex flex-wrap gap-3 text-sm text-gray-400">
+      <div className="flex flex-wrap gap-2 text-xs text-gray-400">
         {tech.map((t, i) => (
           <span
             key={i}
-            className="flex items-center gap-1 bg-violet-900 bg-opacity-40 px-3 py-1 rounded-full font-semibold select-none"
+            className="flex items-center gap-1 bg-violet-900 bg-opacity-40 px-2 py-1 rounded-full font-medium select-none"
           >
             <span>{techIcons[t] || "🔹"}</span>
             {t}
@@ -64,11 +65,11 @@ const ProjectCard = ({
         ))}
       </div>
 
-      <div className="flex gap-4 pt-3 mt-auto">
+      <div className="flex gap-3 pt-2 mt-auto">
         <a
           href={github}
           target="_blank"
-          className="flex-1 bg-violet-600 text-white text-sm px-6 py-3 rounded-lg shadow-md hover:bg-violet-500 transition text-center font-semibold"
+          className="flex-1 bg-violet-800 text-white text-xs px-4 py-2 rounded-md shadow-sm hover:bg-violet-700 transition text-center font-semibold"
           rel="noreferrer"
         >
           GitHub
@@ -76,9 +77,11 @@ const ProjectCard = ({
         {demoVideo && (
           <button
             onClick={() => setShowVideo(!showVideo)}
-            className="flex-1 bg-gray-700 text-sm px-6 py-3 rounded-lg hover:bg-gray-600 transition font-semibold"
+            className="flex-1 bg-gray-700 text-xs px-4 py-2 rounded-md hover:bg-gray-600 transition font-semibold flex items-center justify-center gap-1"
+            aria-label={showVideo ? "Volver a la imagen" : "Ver demo"}
+            title={showVideo ? "Volver a la imagen" : "Ver demo"}
           >
-            {showVideo ? "Ver Imagen" : "Ver Demo"}
+            {showVideo ? "🔙 Volver" : "▶️ Ver Demo"}
           </button>
         )}
       </div>
@@ -111,19 +114,16 @@ const Projects = () => {
       tech: ["C#", "ASP.NET", "SQLite"],
       image: "/tareas.jpg",
       github: "https://github.com/tuusuario/proyecto3",
-      demoVideo: "",
+      demoVideo: "https://www.youtube.com/embed/ID_DEL_VIDEO2",
     },
   ];
 
   return (
-    <section
-      id="proyectos"
-      className="bg-gray-900 py-20 px-6 text-gray-200"
-    >
+    <section id="proyectos" className="bg-gray-900 py-20 px-6 text-gray-200">
       <div className="max-w-6xl mx-auto text-center space-y-12">
-        <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">Proyectos</h2>
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-10">Proyectos</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}

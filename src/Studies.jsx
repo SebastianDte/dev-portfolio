@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 
 const StudyItem = ({ title, institution, date, description }) => {
   return (
@@ -16,8 +16,6 @@ const StudyItem = ({ title, institution, date, description }) => {
 };
 
 const Studies = () => {
-  const [activeTab, setActiveTab] = useState("universidades");
-
   const universities = [
     {
       title: "Técnico Universitario en Programación, Programación informática",
@@ -61,12 +59,7 @@ const Studies = () => {
       date: "Jul. 2023",
       description: "Aptitudes: Git, GitHub",
     },
-    {
-      title: "Desarrollador Web Inicial",
-      institution: "Universidad Tecnológica Nacional",
-      date: "Abr. 2023",
-      description: "Aptitudes: Figma, Bootstrap, HTML, JavaScript, CSS",
-    },
+    
     {
       title: "Gestión de proyectos de Google",
       institution: "Coursera",
@@ -86,36 +79,13 @@ const Studies = () => {
       <div className="max-w-6xl mx-auto text-center space-y-12">
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">Estudios</h2>
 
-        <div className="flex justify-center gap-6">
-          <button
-            className={`px-6 py-2 rounded-md font-semibold transition-colors duration-200 ${
-              activeTab === "universidades"
-                ? "bg-violet-600 text-white"
-                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-            }`}
-            onClick={() => setActiveTab("universidades")}
-          >
-            Universidades
-          </button>
-          <button
-            className={`px-6 py-2 rounded-md font-semibold transition-colors duration-200 ${
-              activeTab === "cursos"
-                ? "bg-violet-600 text-white"
-                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-            }`}
-            onClick={() => setActiveTab("cursos")}
-          >
-            Cursos
-          </button>
-        </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-left">
-          {activeTab === "universidades" &&
-            universities.map((study, idx) => (
-              <StudyItem key={idx} {...study} />
-            ))}
-          {activeTab === "cursos" &&
-            courses.map((course, idx) => <StudyItem key={idx} {...course} />)}
+          {universities.map((study, idx) => (
+            <StudyItem key={`uni-${idx}`} {...study} />
+          ))}
+          {courses.map((course, idx) => (
+            <StudyItem key={`course-${idx}`} {...course} />
+          ))}
         </div>
       </div>
     </section>
