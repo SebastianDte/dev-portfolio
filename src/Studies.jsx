@@ -1,6 +1,7 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
-const StudyItem = ({ title, institution, date, description }) => {
+const StudyItem = ({ title, institution, date, description, github }) => {
   return (
     <div className="bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg border-l-4 border-violet-500 p-6 text-gray-200">
       <div className="flex justify-between items-center mb-2">
@@ -10,6 +11,19 @@ const StudyItem = ({ title, institution, date, description }) => {
       <div className="text-violet-300 font-medium mb-1">{institution}</div>
       {description && (
         <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+      )}
+      {github && (
+        <p className="text-gray-300 text-sm mt-2">
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline flex items-center gap-2"
+          >
+            <FaGithub size={18} />
+            Más de 50 ejercicios prácticos y trabajo final
+          </a>
+        </p>
       )}
     </div>
   );
@@ -24,8 +38,7 @@ const Studies = () => {
       description: "",
     },
     {
-      title:
-        "Técnico Universitario en Desarrollo Web",
+      title: "Técnico Universitario en Desarrollo Web",
       institution: "Universidad Nacional de Entre Ríos",
       date: "Mar. 2023 - Nov. 2025",
       description: "",
@@ -44,7 +57,8 @@ const Studies = () => {
       title: "Foundational C# with Microsoft",
       institution: "freeCodeCamp (en colaboración con Microsoft)",
       date: "Mar. 2024",
-      description: "Formación en desarrollo con C# y .NET, trabajando conceptos clave como estructura modular, manejo de datos, debugging con herramientas modernas y creación de aplicaciones de consola desde cero.",
+      description:
+        "Formación en desarrollo con C# y .NET, trabajando conceptos clave como estructura modular, manejo de datos, debugging con herramientas modernas y creación de aplicaciones de consola desde cero.",
     },
     {
       title: "Curso C# Nivel 2 [.Net + SQL]",
@@ -54,23 +68,26 @@ const Studies = () => {
         "Desarrollo de aplicaciones con WinForms utilizando .NET Framework 4.8, aplicando Programación Orientada a Objetos, arquitectura en capas, validaciones, conexión a bases de datos con ADO.NET e integración con Microsoft SQL Server. Manejo de versiones con GitHub y enfoque en buenas prácticas de desarrollo.",
     },
     {
-      title: "Git - GitHub",
+      title: "Curso Git - GitHub",
       institution: "CodeaRock",
       date: "Jul. 2023",
-      description: "Control de versiones con Git, workflow colaborativo con GitHub, configuración de repos remotos, ramificación y merge, pull requests, manejo de conflictos y colaboración eficiente en equipo.",
+      description:
+        "Control de versiones con Git, workflow colaborativo con GitHub, configuración de repos remotos, ramificación y merge, pull requests, manejo de conflictos y colaboración eficiente en equipo.",
     },
-    
+    // {
+    //   title: "Gestión de proyectos de Google",
+    //   institution: "Coursera",
+    //   date: "Nov. 2022",
+    //   description:
+    //     "Certificación profesional de Google/Coursera que enseña gestión integral de proyectos: planificación, ejecución, monitoreo y cierre; metodologías tradicionales y ágiles (Scrum), estimación de tiempos y riesgos, comunicación efectiva, liderazgo de equipos y uso de herramientas reales para la gestión y documentación del proyecto.",
+    // },
     {
-      title: "Gestión de proyectos de Google",
-      institution: "Coursera",
-      date: "Nov. 2022",
-      description: "Certificación profesional de Google/Coursera que enseña gestión integral de proyectos: planificación, ejecución, monitoreo y cierre; metodologías tradicionales y ágiles (Scrum), estimación de tiempos y riesgos, comunicación efectiva, liderazgo de equipos y uso de herramientas reales para la gestión y documentación del proyecto.",
-    },
-    {
-      title: "C# Nivel 1 - Fundamentos de la Programación",
+      title: "Curso C# Nivel 1 - Fundamentos de la Programación",
       institution: "Maxi Programa",
       date: "Sept. 2021",
-      description: "Introducción práctica a C# y .NET Framework, enfocada en lógica algorítmica, estructuras fundamentales, tipos de datos, funciones y control de flujo, con enfoque en solución de problemas y hábitos de programación limpios.",
+      description:
+        "Introducción práctica a C# y .NET Framework, enfocada en lógica algorítmica, estructuras fundamentales, tipos de datos, funciones y control de flujo, con enfoque en solución de problemas y hábitos de programación limpios.",
+      github: "https://github.com/SebastianDte/Curso-C-Sharp-Nivel-1/blob/main/README.md", 
     },
   ];
 
