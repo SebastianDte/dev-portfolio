@@ -23,16 +23,12 @@ const Contact = () => {
 
   const validate = () => {
     const newErrors = {};
-
-    // Nombre: min 3 letras, solo letras y espacios
     if (!formData.nombre.trim()) {
       newErrors.nombre = "El nombre es obligatorio.";
     } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(formData.nombre.trim())) {
       newErrors.nombre =
         "El nombre debe tener al menos 3 letras y solo contener letras.";
     }
-
-    // Email
     if (!formData.email.trim()) {
       newErrors.email = "El email es obligatorio.";
     } else if (
@@ -40,21 +36,16 @@ const Contact = () => {
     ) {
       newErrors.email = "Email inválido.";
     }
-
-    // Tema: min 5 caracteres
     if (!formData.tema.trim()) {
       newErrors.tema = "El tema es obligatorio.";
     } else if (formData.tema.trim().length < 5) {
       newErrors.tema = "El tema debe tener al menos 5 caracteres.";
     }
-
-    // Mensaje: min 10 caracteres
     if (!formData.mensaje.trim()) {
       newErrors.mensaje = "El mensaje es obligatorio.";
     } else if (formData.mensaje.trim().length < 10) {
       newErrors.mensaje = "El mensaje debe tener al menos 10 caracteres.";
     }
-
     return newErrors;
   };
 
@@ -83,30 +74,47 @@ const Contact = () => {
       if (response.ok) {
         setFormData({ nombre: "", email: "", tema: "", mensaje: "", _gotcha: "" });
         Swal.fire({
-          color: "black",
-          background: "white",
-          confirmButtonColor: "#a855f7",
+          title: "¡Mensaje enviado!",
+          text: "Gracias por contactarme, te escribiré pronto :)",
           icon: "success",
-          iconColor: "#a855f7",
           confirmButtonText: "Cerrar",
-          title: "Gracias por contactarme, te escribiré pronto :)",
+          background: "#1f2937", // gris oscuro (gray-800)
+          color: "#a855f7", // violeta fuerte
+          confirmButtonColor: "#7c3aed", // violeta más oscuro
+          iconColor: "#a855f7",
           customClass: {
-            title: "mi-titulo",
-            content: "mi-contenido",
+            title: "text-2xl font-bold",
+            content: "text-lg",
           },
         });
       } else {
         Swal.fire({
-          icon: "error",
           title: "Error",
           text: "Hubo un problema al enviar el mensaje, intenta más tarde.",
+          icon: "error",
+          background: "#1f2937",
+          color: "#a855f7",
+          confirmButtonColor: "#7c3aed",
+          iconColor: "#a855f7",
+          customClass: {
+            title: "text-2xl font-bold",
+            content: "text-lg",
+          },
         });
       }
     } catch {
       Swal.fire({
-        icon: "error",
         title: "Error",
         text: "Hubo un problema al enviar el mensaje, intenta más tarde.",
+        icon: "error",
+        background: "#1f2937",
+        color: "#a855f7",
+        confirmButtonColor: "#7c3aed",
+        iconColor: "#a855f7",
+        customClass: {
+          title: "text-2xl font-bold",
+          content: "text-lg",
+        },
       });
     } finally {
       setLoading(false);
@@ -118,12 +126,17 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-extrabold mb-12 text-center">Contacto</h2>
 
-        <div className="flex flex-col md:flex-row gap-12">
+        <div
+          className={`flex flex-col md:flex-row gap-0 shadow-2xl rounded-xl overflow-hidden
+            transition-all duration-700 ease-out opacity-100 translate-y-0`}
+        >
           {/* Formulario */}
           <form
             onSubmit={handleSubmit}
             noValidate
-            className="flex-1 bg-gray-800 bg-opacity-70 p-8 rounded-lg shadow-lg"
+            className="flex-1 bg-gray-800 bg-opacity-70 p-8
+              border-r-4 border-transparent md:border-r-gradient-violet
+              rounded-t-lg md:rounded-t-none md:rounded-l-lg"
           >
             <input
               type="text"
@@ -142,6 +155,7 @@ const Contact = () => {
                 type="text"
                 id="nombre"
                 name="nombre"
+                placeholder="Nombre completo"
                 value={formData.nombre}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
@@ -164,6 +178,7 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="correo@ejemplo.com"
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
@@ -184,6 +199,7 @@ const Contact = () => {
                 type="text"
                 id="tema"
                 name="tema"
+                placeholder="Asunto del mensaje"
                 value={formData.tema}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors ${
@@ -205,6 +221,7 @@ const Contact = () => {
                 id="mensaje"
                 name="mensaje"
                 rows="5"
+                placeholder="Escribí tu consulta o mensaje"
                 value={formData.mensaje}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 rounded-md bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none transition-colors ${
@@ -220,14 +237,19 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-violet-700 hover:bg-violet-600 text-white font-semibold py-3 rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-violet-700 hover:bg-violet-600 text-white font-semibold py-3 rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              {loading ? "Enviando..." : "Enviar"}
+              Enviar
             </button>
           </form>
 
           {/* Tarjeta de redes / contacto alternativo */}
-          <div className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-purple-700 via-violet-800 to-indigo-900 rounded-lg p-8 shadow-lg max-w-sm mx-auto md:mx-0">
+          <div
+            className="flex flex-col items-center justify-center text-center
+            bg-gradient-to-br from-purple-700 via-violet-800 to-indigo-900
+            rounded-b-lg md:rounded-b-none md:rounded-r-lg p-8
+            border-l-4 border-gradient-violet"
+          >
             <img
               src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif"
               alt="Code gif"
@@ -243,25 +265,25 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="hover:text-green-500"
+                className="hover:text-green-500 cursor-pointer"
               >
                 <FaWhatsapp />
               </a>
               <a
-                href="https://linkedin.com/in/tuusuario"
+                href="https://www.linkedin.com/in/sebastiandte/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="hover:text-blue-500"
+                className="hover:text-blue-500 cursor-pointer"
               >
                 <FaLinkedin />
               </a>
               <a
-                href="https://github.com/tuusuario"
+                href="https://github.com/SebastianDte"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="hover:text-white"
+                className="hover:text-white cursor-pointer"
               >
                 <FaGithub />
               </a>
@@ -269,6 +291,18 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <style>{`
+        .border-r-gradient-violet {
+          border-image: linear-gradient(to bottom, #8b5cf6, #a855f7, #7c3aed) 1;
+          border-right-style: solid;
+          border-right-width: 4px;
+        }
+        .border-gradient-violet {
+          border-image: linear-gradient(to bottom, #7c3aed, #a855f7, #8b5cf6) 1;
+          border-left-style: solid;
+          border-left-width: 4px;
+        }
+      `}</style>
     </section>
   );
 };

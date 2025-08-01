@@ -1,24 +1,41 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 
-const StudyItem = ({ title, institution, date, description, github }) => {
+const StudyItem = ({ title, institution, date, description, github, isUniversity }) => {
   return (
-    <div className="bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg border-l-4 border-violet-500 p-6 text-gray-200">
+    <div
+      className={`
+        bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl
+        shadow-lg border-l-4 p-6 text-gray-200
+        transition-transform hover:scale-[1.02] duration-300
+        ${isUniversity ? "border-violet-500 shadow-violet-700" : "border-gray-600 shadow-gray-700"}
+        ${isUniversity ? "text-white" : "text-gray-300"}
+      `}
+      style={{ fontSize: isUniversity ? "1.05rem" : "1rem" }}
+    >
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-xl font-bold">{title}</h3>
-        <span className="text-sm text-gray-400">{date}</span>
+        <h3 className={`font-extrabold ${isUniversity ? "text-2xl" : "text-xl"}`}>
+          {title}
+        </h3>
+        <span className={`text-sm ${isUniversity ? "text-violet-300 font-semibold" : "text-gray-400"}`}>
+          {date}
+        </span>
       </div>
-      <div className="text-violet-300 font-medium mb-1">{institution}</div>
+      <div className={`font-medium mb-2 ${isUniversity ? "text-violet-400" : "text-violet-300"}`}>
+        {institution}
+      </div>
       {description && (
-        <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+        <p className={`leading-relaxed ${isUniversity ? "text-gray-200" : "text-gray-300"}`}>
+          {description}
+        </p>
       )}
       {github && (
-        <p className="text-gray-300 text-sm mt-2">
+        <p className="mt-3">
           <a
             href={github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline flex items-center gap-2"
+            className="hover:underline flex items-center gap-2 text-sm text-gray-300"
           >
             <FaGithub size={18} />
             Más de 50 ejercicios prácticos y trabajo final
@@ -33,15 +50,17 @@ const Studies = () => {
   const universities = [
     {
       title: "Técnico Universitario en Programación.",
-      institution: "Universidad Tecnológica Nacional (UTN)",
+      institution: "Universidad Tecnológica Nacional (FR General Pacheco)",
       date: "Ago. 2024",
-      description: "",
+      description:
+        "Carrera orientada al desarrollo backend con énfasis en C#, .NET, bases de datos y lógica avanzada. En proceso de finalizar las materias restantes.",
     },
     {
       title: "Técnico Universitario en Desarrollo Web",
       institution: "Universidad Nacional de Entre Ríos",
       date: "Mar. 2023 - Nov. 2025",
-      description: "",
+      description:
+        "Formación enfocada en desarrollo web full stack, trabajando con React, Node.js, Next.js, TypeScript y Angular. A dos materias de recibirme.",
     },
   ];
 
@@ -74,20 +93,12 @@ const Studies = () => {
       description:
         "Control de versiones con Git, workflow colaborativo con GitHub, configuración de repos remotos, ramificación y merge, pull requests, manejo de conflictos y colaboración eficiente en equipo.",
     },
-    // {
-    //   title: "Gestión de proyectos de Google",
-    //   institution: "Coursera",
-    //   date: "Nov. 2022",
-    //   description:
-    //     "Certificación profesional de Google/Coursera que enseña gestión integral de proyectos: planificación, ejecución, monitoreo y cierre; metodologías tradicionales y ágiles (Scrum), estimación de tiempos y riesgos, comunicación efectiva, liderazgo de equipos y uso de herramientas reales para la gestión y documentación del proyecto.",
-    // },
     {
       title: "Curso C# Nivel 1 - Fundamentos de la Programación",
       institution: "Maxi Programa",
       date: "Sept. 2021",
       description:
         "Introducción práctica a C# y .NET Framework, enfocada en lógica algorítmica, estructuras fundamentales, tipos de datos, funciones y control de flujo, con enfoque en solución de problemas y hábitos de programación limpios.",
-      github: "https://github.com/SebastianDte/Curso-C-Sharp-Nivel-1/blob/main/README.md", 
     },
   ];
 
@@ -98,10 +109,10 @@ const Studies = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-left">
           {universities.map((study, idx) => (
-            <StudyItem key={`uni-${idx}`} {...study} />
+            <StudyItem key={`uni-${idx}`} {...study} isUniversity={true} />
           ))}
           {courses.map((course, idx) => (
-            <StudyItem key={`course-${idx}`} {...course} />
+            <StudyItem key={`course-${idx}`} {...course} isUniversity={false} />
           ))}
         </div>
       </div>
