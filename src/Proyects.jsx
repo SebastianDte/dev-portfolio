@@ -3,9 +3,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const techIcons = {
-  "C#": "🟦",
-  ".NET": "⚙️",
-  "Consola": "🖥️",
+  "C#": <img src="/logos/csharp_line_logo_icon_146579.svg" alt="C#" className="w-5 h-5" />,
+  ".NET": <img src="/logos/.netFramework_logo.svg" alt=".NET" className="w-5 h-5" />,
   "SQL Server": "🗄️",
   "Entity Framework": "🧱",
   "JWT": "🔐",
@@ -145,16 +144,16 @@ const Projects = () => {
   const moreProjects = [
     {
       title: "Ejercicios C# Nivel 1",
-      description: "Colección de 60 ejercicios de lógica + TP final.",
-      github: "https://github.com/sebi/proyecto-csharp",
-      techs: ["C#", ".NET", "Consola"],
+      description: "Más de 50 ejercicios en C# aplicando fundamentos de programación: condicionales, ciclos, corte de control, funciones, vectores, lotes y cadenas.",
+      github: "https://github.com/SebastianDte/Curso-C-Sharp-Nivel-1",
+      techs: ["C#", ".NET"],
     },
     {
       title: "Mini Sistema de Cajero (Console App)",
       description:
         "TP final del curso de programación: simulación de un cajero automático.",
       github: "https://github.com/tuusuario/tp-cajero-consola",
-      techs: ["C#", ".NET", "Consola"],
+      techs: ["C#", "", "Consola"],
     },
   ];
 
@@ -197,8 +196,8 @@ const Projects = () => {
                   key={i}
                   className="text-sm bg-gray-700 text-gray-300 px-2 py-1 rounded-full flex items-center gap-1"
                 >
-                  <span>{techIcons[tech] ?? "🔧"}</span>
-                  <span>{tech}</span>
+                   <span className="w-7 h-7 flex items-center justify-center">{techIcons[tech] ?? "🔧"}</span>
+                  {/* <span>{tech}</span> */}
                 </span>
               ))}
             </div>
