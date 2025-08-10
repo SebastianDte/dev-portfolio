@@ -117,7 +117,7 @@ const Projects = () => {
       title: "API de Turnos Médicos",
       description:
         "Backend REST para turnos médicos con control de acceso y validaciones.",
-      tech: [".NET", "JWT", "EF Core", "Swagger"],
+      tech: [".NET"],
       image: "/turnos.jpg",
       github: "https://github.com/tuusuario/proyecto2",
       demoVideo: "https://www.youtube.com/embed/ID_DEL_VIDEO2",
